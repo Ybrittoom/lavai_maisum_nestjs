@@ -3,8 +3,7 @@ import { UsuarioRepository } from './usuario.repository';
 
 @Controller('/usuarios')
 export class UsuarioController {
-  private usuarioRepository = new UsuarioRepository();
-
+  constructor(private usuarioRepository: UsuarioRepository) {}
   //metodo post
   @Post()
   async criaUsuario(@Body() dadosUsuarios) {
@@ -15,6 +14,6 @@ export class UsuarioController {
   //metodo get
   @Get()
   async listUsuarios() {
-    return this.usuarioRepository.listar()
+    return this.usuarioRepository.listar();
   }
 }
